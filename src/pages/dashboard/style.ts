@@ -1,8 +1,9 @@
+import { EAFNOSUPPORT } from 'constants';
 import styled from 'styled-components';
 
 export const Title = styled.h1`
   font-size: 48px;
-  color: #3a3a3a;
+  color: #f0f0f0;
   max-width: 450px;
   line-height: 56px;
   margin: 80px auto;
@@ -24,11 +25,12 @@ input {
   border-radius: 5px 0 0 5px;
   color: #3a3a3a;
   font-size: 16px;
+}
 
   &::placeholder {
     color: #a8a8b3;
   }
-}
+  
 
 button {
   width: 210px;
@@ -42,22 +44,58 @@ button {
 `;
 
 export const Cont = styled.div`
-    background: black;
     width: 850px;
     margin: 50px auto;
     min-height: 100px;
+`;
 
-    div {
-        width: 395px;
-        color: white;
-        margin: 10px 15px 10px 15px;
-        background: green;
-        display: inline-block;
+export const TituloCampos = styled.p`
+  text-align: center;
+  font-weight: bold;
+  color: black;
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
 
-        
-    }
+  #titulo {
+    font-weight: bold;
+    font-size: 30px;
+  }
 `;
 
 export const Campo = styled.div`
-
+    width: 353px;
+    color: black;
+    margin: 10px 35px 10px 35px;
+    background: #d9d9d9;
+    display: inline-block;
+    border-radius: 10px; 
+    padding-top: 1px;
+    p {
+      margin: 5px 15px;
+      font-size: 20px;
+      font-weight: initial  ;
+      span {
+        color: #363636;
+        font-weight: bold;
+      };
+    };
 `;
+
+export const Irmaos = styled.a`
+    width:40%
+    height: 40px;
+    p{
+      margin: 2px 15px;
+      font-size: 20px;
+      float:left;
+      span {
+        color: #363636;
+      }
+    }
+    #uf {
+      margin-left:90px;
+    }
+`;
+
+

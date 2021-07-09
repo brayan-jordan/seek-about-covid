@@ -8,7 +8,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #f0f0f5;
+    background-image: url('https://s2.glbimg.com/YVDwa_VXlwAgHfNghjWXQGjbIuM=/0x600/s.glbimg.com/po/tt2/f/original/2014/09/11/abe018ed012d203012313b012911.jpeg');
     -webkit-font-smoothing: antialiased;
   }
 
