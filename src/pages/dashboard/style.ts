@@ -1,5 +1,5 @@
-import { EAFNOSUPPORT } from 'constants';
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Title = styled.h1`
   font-size: 48px;
@@ -25,6 +25,7 @@ input {
   border-radius: 5px 0 0 5px;
   color: #3a3a3a;
   font-size: 16px;
+
 }
 
   &::placeholder {
@@ -40,6 +41,12 @@ button {
   border: 0;
   color: #fff;
   font-weight: bold;    
+
+  transition: 0.2s;
+
+  &:hover {
+    background: ${shade(0.3, '#595959')};
+  }
 }
 `;
 
@@ -64,9 +71,9 @@ export const TituloCampos = styled.p`
 `;
 
 export const Campo = styled.div`
-    width: 353px;
+    width: 380px;
     color: black;
-    margin: 10px 35px 10px 35px;
+    margin: 10px 22.5px 10px 22.5px;
     background: #d9d9d9;
     display: inline-block;
     border-radius: 10px; 
@@ -80,6 +87,13 @@ export const Campo = styled.div`
         font-weight: bold;
       };
     };
+
+    transition: 0.2s;
+
+    &:hover {
+      transform: translate(10px);
+    }
+
 `;
 
 export const Irmaos = styled.a`
