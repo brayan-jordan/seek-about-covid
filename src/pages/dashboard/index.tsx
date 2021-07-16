@@ -1,6 +1,8 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent } from 'react';
 import api from '../../services/api';
 import { Title, Form, Cont, Campo, TituloCampos, Irmaos, Error } from './style';
+import { Link } from 'react-router-dom';
+
 interface Repository {
   cidade: string,
   logradouro: string,
@@ -11,7 +13,23 @@ interface Repository {
 const Dashboard: React.FC = () => {
   const [newRepo, setNewRepo] = useState('');
   const[inputError, setInputError] = useState('');
-  const [repositories, setRepositories] = useState<Repository[]>([]);
+  const [repositories, setRepositories] = useState<Repository[]>(() => {
+    const storageRepository = localStorage.getItem('@CepExplorer:repositories', );
+
+    if(storageRepository){
+      return JSON.parse(storageRepository)
+    }
+    return [];
+
+  });
+
+  useEffect(() => {
+    localStorage.setItem(
+      '@CepExplorer:repositories',
+      JSON.stringify(repositories)
+    )
+  }, [repositories]);
+  
   async function handleAddRepository(
     event: FormEvent<HTMLFormElement>,
     ): Promise<void> {
@@ -46,15 +64,17 @@ const Dashboard: React.FC = () => {
 
       <Cont>
       {repositories.map(repository => (
-        <Campo>
-          <>
-            <TituloCampos><a><span id="titulo">{repository.cidade}</span></a></TituloCampos>
-              <p><span>RUA: </span>{repository.logradouro}</p>
-              <p><span>BAIRRO: </span>{repository.bairro}</p>
-              <Irmaos><p><span>CEP: </span>{repository.cep}</p></Irmaos>
-              <Irmaos><p id="uf"><span>UF: </span>{repository.estado}</p></Irmaos>
-          </>
-          </Campo>
+        <Link to={`/repository/${repository.cep}`}>
+          <Campo>
+            <>
+              <TituloCampos><a><span id="titulo">{repository.cidade}</span></a></TituloCampos>
+                <p><span>RUA: </span>{repository.logradouro}</p>
+                <p><span>BAIRRO: </span>{repository.bairro}</p>
+                <Irmaos><p><span>CEP: </span>{repository.cep}</p></Irmaos>
+                <Irmaos><p id="uf"><span>UF: </span>{repository.estado}</p></Irmaos>
+            </>
+            </Campo>
+          </Link>
         ))}
       </Cont>
     </>

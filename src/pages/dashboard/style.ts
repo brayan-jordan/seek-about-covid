@@ -33,6 +33,7 @@ input {
   border: 2px solid #fff;
   ${props => props.hasError && css`
     border-color: #C53030;
+    border-rigth: 0px;
   ` }
 }
 
