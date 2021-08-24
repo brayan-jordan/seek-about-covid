@@ -3,12 +3,16 @@ import api from '../../services/api';
 import { Title, Form, Cont, Campo, TituloCampos, Irmaos, Error } from './style';
 import { Link } from 'react-router-dom';
 
+interface Estado {
+  uf: string;
+}
 interface Repository {
-  cidade: string,
-  logradouro: string,
-  bairro: string,
-  cep: string,
-  estado: string
+  uf: string,
+  cases: BigInt,
+  deaths: BigInt,
+  suspects: BigInt,
+  state: Estado,
+  refuses: BigInt
 }
 const Dashboard: React.FC = () => {
   const [newRepo, setNewRepo] = useState('');
@@ -35,18 +39,18 @@ const Dashboard: React.FC = () => {
     ): Promise<void> {
       event.preventDefault();
       if(!newRepo){
-        setInputError("Digite um CEP para pesquisar");
+        setInputError("Digite a sigla de um estado:");
         return;
       }
 
     try{
-      const response = await api.get<Repository>(`cep/${newRepo}`);
+      const response = await api.get<Repository>(`uf/${newRepo}`);
       const repository = response.data;
       setRepositories([...repositories, repository]);
       setNewRepo('');
       setInputError('');
     }catch(err){
-        setInputError('CEP não encontrado ou inexistnte')
+        setInputError('UF Nao encontrada')
     }
   }
   return (
@@ -64,14 +68,14 @@ const Dashboard: React.FC = () => {
 
       <Cont>
       {repositories.map(repository => (
-        <Link to={`/repository/${repository.cep}`}>
+        <Link to={`/repository/${repository.uf}`}>
           <Campo>
             <>
-              <TituloCampos><a><span id="titulo">{repository.cidade}</span></a></TituloCampos>
-                <p><span>RUA: </span>{repository.logradouro}</p>
-                <p><span>BAIRRO: </span>{repository.bairro}</p>
-                <Irmaos><p><span>CEP: </span>{repository.cep}</p></Irmaos>
-                <Irmaos><p id="uf"><span>UF: </span>{repository.estado}</p></Irmaos>
+              <TituloCampos><a><span id="titulo">{repository.uf}</span></a></TituloCampos>
+                <p><span>CASOS: </span>{repository.cases}</p>
+                <p><span>SUSPEITOS: </span>{repository.suspects}</p>
+                <Irmaos><p><span>NEGATIVOS: </span>{repository.refuses}</p></Irmaos>
+                <Irmaos><p id="uf"><span>MORTES: </span>{repository.deaths}</p></Irmaos>
             </>
             </Campo>
           </Link>

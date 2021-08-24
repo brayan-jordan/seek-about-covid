@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://api.postmon.com.br/v1/',
+  baseURL: 'https://covid19-brazil-api.vercel.app/api/report/v1/brazil/',
 });
 
 export default api;
