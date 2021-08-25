@@ -8,7 +8,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background-image: url('https://s2.glbimg.com/YVDwa_VXlwAgHfNghjWXQGjbIuM=/0x600/s.glbimg.com/po/tt2/f/original/2014/09/11/abe018ed012d203012313b012911.jpeg');
+    background-image: url('https://data.1freewallpapers.com/download/the-other-side-of-the-desktop-in-august-2014-calendar-blue-sea.jpg');
     -webkit-font-smoothing: antialiased;
   }
 

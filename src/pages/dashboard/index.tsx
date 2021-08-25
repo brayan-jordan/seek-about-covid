@@ -45,7 +45,7 @@ const Dashboard: React.FC = () => {
 
     try{
       const response = await api.get<Repository>(`uf/${newRepo}`);
-      const repository = response.data;
+      const repository = response.data;  
       setRepositories([...repositories, repository]);
       setNewRepo('');
       setInputError('');
@@ -55,7 +55,7 @@ const Dashboard: React.FC = () => {
   }
   return (
     <>
-      <Title>Consulta por CNPJ</Title>
+      <Title>Consulta por UF</Title>
       <Form hasError={!!inputError} onSubmit={handleAddRepository}>
         <input
         value={newRepo}
@@ -74,8 +74,8 @@ const Dashboard: React.FC = () => {
               <TituloCampos><a><span id="titulo">{repository.uf}</span></a></TituloCampos>
                 <p><span>CASOS: </span>{repository.cases}</p>
                 <p><span>SUSPEITOS: </span>{repository.suspects}</p>
-                <Irmaos><p><span>NEGATIVOS: </span>{repository.refuses}</p></Irmaos>
-                <Irmaos><p id="uf"><span>MORTES: </span>{repository.deaths}</p></Irmaos>
+                <p><span>NEGATIVOS: </span>{repository.refuses}</p>
+                <p id="uf"><span>MORTES: </span>{repository.deaths}</p>
             </>
             </Campo>
           </Link>
