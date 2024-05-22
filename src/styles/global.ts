@@ -10,6 +10,9 @@ export default createGlobalStyle`
   body {
     background-image: url('https://data.1freewallpapers.com/download/the-other-side-of-the-desktop-in-august-2014-calendar-blue-sea.jpg');
     -webkit-font-smoothing: antialiased;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
 
   body, input, button {
